@@ -1,6 +1,6 @@
 import fetchData from './fetchData'
 
-const fetchProfile = async (token, setProfile, setError, login) => {
+const fetchProfile = async ({ token, setProfile, setError, login }) => {
   const result = await fetchData('/private/me', {
     headers: {
       Authorization: `Bearer ${token}`,

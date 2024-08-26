@@ -37,11 +37,11 @@ export default function AuthProvider({ children }) {
     }
 
     if (!profile && token) {
-      fetchProfile(token, setProfile, setError, login)
+      fetchProfile({ token, setProfile, setError, login })
     }
 
     if (!news && token) {
-      fetchNews(token, setNews, setError)
+      fetchNews({ token, setNews, setError })
     }
   }, [token, profile, news, loginData])
 
