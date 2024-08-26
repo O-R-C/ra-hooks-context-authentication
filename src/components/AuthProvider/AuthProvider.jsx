@@ -18,6 +18,7 @@ export default function AuthProvider({ children }) {
     setIsAuthenticated(false)
     setToken(null)
     setProfile(null)
+    setLoginData(null)
   }
 
   const clearError = () => setError(null)
