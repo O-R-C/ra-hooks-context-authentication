@@ -1,14 +1,19 @@
+import { useContext } from 'react'
+import AuthContext from '../../contexts/AuthContext'
+import Header from '../Header/Header'
+import ErrorElement from '../ErrorElement/ErrorElement'
+import styles from './NetoSocial.module.css'
+
 export default function NetoSocial() {
+  const { error, clearError } = useContext(AuthContext)
+  if (error) {
+    setTimeout(clearError, 3000)
+    return <ErrorElement error={error} />
+  }
+
   return (
-    <div className='neto-social'>
-      <a
-        href='https://github.com/netology-code/react-homeworks/tree/main/8/ra-hooks-context-authentication'
-        target='_blank'
-        rel='noreferrer'
-        className='neto-social__link'
-      >
-        GitHub
-      </a>
+    <div className={styles.NetoSocial}>
+      <Header />
     </div>
   )
 }
