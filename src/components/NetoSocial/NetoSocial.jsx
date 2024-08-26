@@ -3,6 +3,7 @@ import AuthContext from '../../contexts/AuthContext'
 import Header from '../Header/Header'
 import ErrorElement from '../ErrorElement/ErrorElement'
 import styles from './NetoSocial.module.css'
+import ContentMain from '../ContentMain/ContentMain'
 
 export default function NetoSocial() {
   const { error, clearError } = useContext(AuthContext)
@@ -12,8 +13,9 @@ export default function NetoSocial() {
   }
 
   return (
-    <div className={styles.NetoSocial}>
+    <div className={styles.netoSocial}>
       <Header />
+      <ContentMain />
     </div>
   )
 }

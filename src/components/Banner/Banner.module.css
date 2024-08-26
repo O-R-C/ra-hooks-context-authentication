@@ -1,0 +1,21 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 300px;
+  width: 85%;
+  margin-inline: auto;
+
+  background-color: #e8ebee;
+}
+
+.title {
+  font-size: 48px;
+}
+
+.text {
+  font-size: 24px;
+  font-weight: normal;
+}
