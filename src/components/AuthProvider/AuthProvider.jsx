@@ -4,14 +4,20 @@ import fetchNews from '../../js/fetchNews'
 import fetchToken from '../../js/fetchToken'
 import fetchProfile from '../../js/fetchProfile'
 import AuthContext from '../../contexts/AuthContext'
+import Storage from '../../js/classes/Storage'
+
+const storage = new Storage()
 
 export default function AuthProvider({ children }) {
   const [news, setNews] = useState(null)
   const [error, setError] = useState(null)
-  const [token, setToken] = useState(null)
-  const [profile, setProfile] = useState(null)
+  const [token, setToken] = useState(storage.get('token') || null)
+  const [profile, setProfile] = useState(storage.get('profile') || null)
   const [loginData, setLoginData] = useState(null)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(token !== null)
+
+  token && storage.set('token', token)
+  profile && storage.set('profile', profile)
 
   const login = () => setIsAuthenticated(true)
   const logout = () => {
@@ -19,6 +25,8 @@ export default function AuthProvider({ children }) {
     setToken(null)
     setProfile(null)
     setLoginData(null)
+    storage.remove('token')
+    storage.remove('profile')
   }
 
   const clearError = () => setError(null)
